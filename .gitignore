@@ -1,0 +1,32 @@
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE/Editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Dependencies (if any added)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs (if any added)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Logs
+*.log
+npm-debug.log
+yarn-error.log
+
+# Temporary files
+.tmp/
+temp/

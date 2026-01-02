@@ -1,0 +1,22 @@
+{
+  "name": "A Gentle Beginning",
+  "version": 2,
+  "public": true,
+  "env": {},
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/page(\\d).html",
+      "dest": "/$1.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

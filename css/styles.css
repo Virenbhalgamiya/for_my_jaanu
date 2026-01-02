@@ -1,0 +1,671 @@
+/* ============================================
+   ROMANTIC WEBSITE - MASTER STYLES
+   Premium, Minimalist, Deeply Human
+   ============================================ */
+
+/* Root Color Palette */
+:root {
+  /* Primary Romantic Colors */
+  --cream: #faf8f5;
+  --blush: #f5e6e1;
+  --rose: #e8d4cc;
+  --warm-beige: #dcc9bc;
+  --soft-mauve: #d9c4d4;
+  --deep-rose: #a67c7c;
+  
+  /* Text Colors */
+  --text-dark: #3d3d3d;
+  --text-muted: #6b6b6b;
+  --text-light: #8b8b8b;
+  
+  /* Accents */
+  --accent-warm: #c9a697;
+  --white: #ffffff;
+  
+  /* Animation Easing */
+  --ease-gentle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   GLOBAL & TYPOGRAPHY
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Georgia', 'Garamond', serif;
+  background: linear-gradient(135deg, #faf8f5 0%, #f5e6e8 50%, #faf3f0 100%);
+  color: var(--text-dark);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Romantic Falling Petals Background - Cinematic & Dreamy */
+.petals-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* Petal Shape - Elegant Rose Petal */
+.petal {
+  position: absolute;
+  width: 10px;
+  height: 12px;
+  background: linear-gradient(135deg, rgba(242, 227, 227, 0.12) 0%, rgba(230, 210, 210, 0.08) 100%);
+  border-radius: 50% 50% 50% 0;
+  animation: fallPetal linear infinite;
+  transform-origin: center;
+  filter: blur(0.3px);
+  will-change: transform, opacity;
+}
+
+/* Petal size variations for natural depth */
+.petal.tiny {
+  width: 6px;
+  height: 8px;
+  opacity: 0.06;
+  filter: blur(0.5px);
+  background: linear-gradient(135deg, rgba(245, 235, 235, 0.08) 0%, rgba(235, 220, 220, 0.05) 100%);
+}
+
+.petal.small {
+  width: 8px;
+  height: 10px;
+  opacity: 0.08;
+  filter: blur(0.4px);
+  background: linear-gradient(135deg, rgba(240, 230, 230, 0.1) 0%, rgba(230, 215, 215, 0.06) 100%);
+}
+
+.petal.medium {
+  width: 10px;
+  height: 12px;
+  opacity: 0.12;
+  filter: blur(0.3px);
+  background: linear-gradient(135deg, rgba(235, 220, 220, 0.12) 0%, rgba(225, 210, 210, 0.08) 100%);
+}
+
+.petal.large {
+  width: 14px;
+  height: 16px;
+  opacity: 0.15;
+  filter: blur(0.25px);
+  background: linear-gradient(135deg, rgba(230, 215, 215, 0.14) 0%, rgba(220, 205, 205, 0.1) 100%);
+}
+
+/* Color variations - champagne, blush, muted rose */
+.petal:nth-child(4n) {
+  background: linear-gradient(135deg, rgba(242, 232, 227, 0.1) 0%, rgba(235, 220, 215, 0.06) 100%);
+}
+
+.petal:nth-child(4n+1) {
+  background: linear-gradient(135deg, rgba(245, 230, 235, 0.11) 0%, rgba(235, 215, 220, 0.07) 100%);
+}
+
+.petal:nth-child(4n+2) {
+  background: linear-gradient(135deg, rgba(238, 228, 228, 0.09) 0%, rgba(228, 213, 213, 0.05) 100%);
+}
+
+.petal:nth-child(4n+3) {
+  background: linear-gradient(135deg, rgba(240, 225, 230, 0.12) 0%, rgba(230, 210, 215, 0.08) 100%);
+}
+
+/* Cinematic Falling Animation - Studio Ghibli Style */
+@keyframes fallPetal {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--petal-opacity, 0.1);
+  }
+  25% {
+    transform: translateY(25vh) translateX(10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(-8px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(75vh) translateX(12px) rotate(270deg);
+  }
+  95% {
+    opacity: var(--petal-opacity, 0.1);
+  }
+  100% {
+    transform: translateY(100vh) translateX(-5px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Assign animation types for variety */
+.petal:nth-child(odd) {
+  animation: fallPetalSway linear infinite;
+}
+
+.petal:nth-child(3n) {
+  animation: fallPetalStraight linear infinite;
+}
+
+@keyframes fallPetalSway {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--petal-opacity, 0.1);
+  }
+  20% {
+    transform: translateY(20vh) translateX(-15px) rotate(60deg);
+  }
+  40% {
+    transform: translateY(40vh) translateX(10px) rotate(140deg);
+  }
+  60% {
+    transform: translateY(60vh) translateX(-12px) rotate(220deg);
+  }
+  80% {
+    transform: translateY(80vh) translateX(8px) rotate(300deg);
+  }
+  95% {
+    opacity: var(--petal-opacity, 0.1);
+  }
+  100% {
+    transform: translateY(100vh) translateX(-3px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fallPetalStraight {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--petal-opacity, 0.1);
+  }
+  95% {
+    opacity: var(--petal-opacity, 0.1);
+  }
+  100% {
+    transform: translateY(100vh) translateX(3px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Heart shape for Page 3 only - subtle and sparse */
+.heart-subtle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  animation: fallPetal linear infinite;
+  opacity: 0.08;
+  filter: blur(0.4px);
+}
+
+.heart-subtle::before,
+.heart-subtle::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background: rgba(230, 210, 215, 0.15);
+  border-radius: 8px 8px 0 0;
+}
+
+.heart-subtle::before {
+  left: -4px;
+  transform: rotate(-45deg);
+  transform-origin: 100% 100%;
+}
+
+.heart-subtle::after {
+  left: 4px;
+  transform: rotate(45deg);
+  transform-origin: 0 100%;
+}
+
+/* Typography Scale */
+h1 {
+  font-family: 'Georgia', serif;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+h2 {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: var(--text-dark);
+}
+
+h3 {
+  font-family: 'Arial', '-apple-system', 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: var(--text-dark);
+}
+
+p {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.hindi-text {
+  font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.hindi-small {
+  font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+/* ============================================
+   PAGE STRUCTURE
+   ============================================ */
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Page Entry Animation */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page.enter {
+  animation: pageEnter 1.2s var(--ease-gentle) forwards;
+}
+
+.page-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ============================================
+   TEXT REVEAL ANIMATIONS
+   ============================================ */
+
+@keyframes textLineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-line {
+  opacity: 0;
+  animation: textLineReveal 0.8s var(--ease-gentle) forwards;
+}
+
+.hindi-line {
+  opacity: 0;
+  animation: textLineReveal 0.8s var(--ease-gentle) forwards;
+  margin-top: 0.5rem;
+}
+
+/* Stagger delays for lines */
+.text-line:nth-child(1) { animation-delay: 0s; }
+.text-line:nth-child(2) { animation-delay: 0.4s; }
+.text-line:nth-child(3) { animation-delay: 0.8s; }
+.text-line:nth-child(4) { animation-delay: 1.2s; }
+
+.hindi-line:nth-child(1) { animation-delay: 0.2s; }
+.hindi-line:nth-child(2) { animation-delay: 0.6s; }
+.hindi-line:nth-child(3) { animation-delay: 1s; }
+.hindi-line:nth-child(4) { animation-delay: 1.4s; }
+
+/* ============================================
+   SCROLL-BASED REVEAL ANIMATIONS
+   ============================================ */
+
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal.active {
+  animation: scrollReveal 1s var(--ease-gentle) forwards;
+}
+
+.reveal-stagger-1 { animation-delay: 0s; }
+.reveal-stagger-2 { animation-delay: 0.2s; }
+.reveal-stagger-3 { animation-delay: 0.4s; }
+.reveal-stagger-4 { animation-delay: 0.6s; }
+
+/* ============================================
+   BUTTONS - MICRO INTERACTIONS
+   ============================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  margin-top: 2rem;
+  font-family: 'Arial', '-apple-system', 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  background-color: var(--blush);
+  color: var(--text-dark);
+  border: 2px solid var(--rose);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.6s var(--ease-smooth);
+  box-shadow: 0 4px 16px rgba(168, 124, 124, 0.08);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-smooth);
+  border-radius: 2rem;
+}
+
+.button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(168, 124, 124, 0.15);
+  background-color: var(--rose);
+  border-color: var(--deep-rose);
+}
+
+.button:active {
+  transform: translateY(-2px);
+}
+
+.button-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.6s var(--ease-smooth);
+}
+
+.button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   CARDS - ROMANTIC REVEAL
+   ============================================ */
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(168, 124, 124, 0.06);
+  transition: all 0.7s var(--ease-smooth);
+  opacity: 0;
+  transform: translateY(20px);
+  border: 1px solid rgba(232, 212, 204, 0.5);
+}
+
+.card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(168, 124, 124, 0.12);
+  border-color: var(--rose);
+}
+
+.card-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.card .hindi-text {
+  font-size: 0.9rem;
+  color: var(--accent-warm);
+  font-style: italic;
+}
+
+/* ============================================
+   REFLECTION LOG STYLE
+   ============================================ */
+
+.reflection-log {
+  background: var(--white);
+  padding: 2rem 2.5rem;
+  border-left: 3px solid var(--rose);
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(168, 124, 124, 0.05);
+  text-align: left;
+}
+
+.reflection-log ul {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.reflection-log li {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.reflection-log li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--rose);
+  font-weight: bold;
+}
+
+/* ============================================
+   SPACING & LAYOUT
+   ============================================ */
+
+.section {
+  margin: 1.5rem 0;
+}
+
+.section-title {
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background-color: var(--rose);
+  margin: 2rem auto;
+  opacity: 0.4;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+@media (max-width: 768px) {
+  .page {
+    padding: 3rem 1.5rem;
+  }
+
+  .page-content {
+    max-width: 100%;
+  }
+
+  .card-container {
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  .button {
+    padding: 0.9rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .page-content {
+    padding: 1rem 0;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .button {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .reflection-log {
+    padding: 1.5rem 1.2rem;
+  }
+}
+
+/* ============================================
+   PAGE TRANSITION
+   ============================================ */
+
+@keyframes pageExit {
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+.page.exit {
+  animation: pageExit 0.8s var(--ease-smooth) forwards;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.hidden {
+  display: none !important;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Disable petals on very small screens for performance */
+@media (max-width: 400px) {
+  .petals-background {
+    display: none;
+  }
+}
